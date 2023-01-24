@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Peasant extends BaseHero {
 
     int delivery;
@@ -13,8 +15,24 @@ public class Peasant extends BaseHero {
         this.delivery = 1;
     }
 
+    public void setDelivery(int delivery) {
+        this.delivery = delivery;
+    }
+    
+    public int getDelivery() {
+        return delivery;
+    }
+
     @Override
     public String toString() {
     return super.toString() + ", Delivery: " + delivery; 
-}
+    }
+
+    @Override
+    public void step(ArrayList<BaseHero> team) {             
+        if (this.delivery <= 0) {
+            this.delivery = 1;
+            System.out.println("У Крестьянина была реактивирована доставка стрел: o^-o ");
+        }        
+    }
 }

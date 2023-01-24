@@ -6,6 +6,7 @@ public abstract class BaseHero implements Interface {
     String name;
     int attack, protection, health, maxHealth, speed;
     int[] damage;
+    public int delivery;
 
 public BaseHero(String name, int attack, int protection, int[] damage, int health, int speed) {
     this.name = name;
@@ -30,5 +31,13 @@ public void step(ArrayList<BaseHero> team) {
 @Override
 public String getInfo() {
     return name + " " + String.valueOf(maxHealth) + " " + String.valueOf(health);
+}
+
+public void setDelivery(int delivery) {
+    this.delivery = delivery;
+}
+
+public int getDelivery() {
+    return delivery;
 }
 }
