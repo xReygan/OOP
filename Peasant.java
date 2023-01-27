@@ -4,14 +4,15 @@ public class Peasant extends BaseHero {
 
     int delivery;
 
-    public Peasant(String name, int attack, int protection, int[] damage, int health, int speed, int delivery) {
-        super(name, attack, protection, damage, health, speed);
+    public Peasant(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y, int delivery) {
+        super(name, attack, protection, damage, health, speed, x, y);
         
         this.delivery = delivery;
+        super.position = new Vector2(x, y);
     }
 
-    public Peasant(String name) {
-        super(name, 1, 1, new int[] {1, 1}, 1, 3);
+    public Peasant(String name, int x, int y) {
+        super(name, 1, 1, new int[] {1, 1}, 1, 3, x, y);
         this.delivery = 1;
     }
 

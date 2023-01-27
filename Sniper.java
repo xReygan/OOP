@@ -5,15 +5,16 @@ public class Sniper extends BaseHero {
     int shots;
     int maxShots;
 
-    public Sniper(String name, int attack, int protection, int[] damage, int health, int speed, int shots) {
-        super(name, attack, protection, damage, health, speed);
+    public Sniper(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y, int shots) {
+        super(name, attack, protection, damage, health, speed, x, y);
         
         this.shots = shots;
         this.maxShots = shots;
+        super.position = new Vector2(x, y);
     }
 
-    public Sniper(String name) {
-        super(name, 12, 10, new int[] {8, 10}, 15, 9);
+    public Sniper(String name, int x, int y) {
+        super(name, 12, 10, new int[] {8, 10}, 15, 9, x, y);
         this.shots = 32;
     }
     

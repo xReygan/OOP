@@ -4,14 +4,15 @@ public class Monk extends BaseHero {
 
     int magic;
 
-    public Monk(String name, int attack, int protection, int[] damage, int health, int speed, int magic) {
-        super(name, attack, protection, damage, health, speed);
+    public Monk(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y, int magic) {
+        super(name, attack, protection, damage, health, speed, x, y);
 
         this.magic = magic;
+        super.position = new Vector2(x, y);
     }
 
-    public Monk(String name) {
-        super(name, 12, 7, new int[] {-4, -4}, 30, 5);
+    public Monk(String name, int x, int y) {
+        super(name, 12, 7, new int[] {-4, -4}, 30, 5, x, y);
         this.magic = 16;
     }
 
@@ -32,14 +33,13 @@ public class Monk extends BaseHero {
                 tmp = Integer.parseInt(info[2]) * 100 / Integer.parseInt(info[1]);
             }
         }
-        System.out.println("Самый поврежденный юнит: ");
-        System.out.println(team.get(min));
+        // System.out.println("Самый поврежденный юнит: ");
+        // System.out.println(team.get(min));
         if (team.get(min).health - damage[1] > team.get(min).maxHealth) {
             team.get(min).health = team.get(min).maxHealth;
         } else {
             team.get(min).health = team.get(min).health - damage[1];
         }
-        System.out.println("Был пролечен до " + team.get(min).health + " пунктов здоровья:");
-        System.out.println(team.get(min));       
+        System.out.println("Был пролечен: +++ " + team.get(min));
     }
 }

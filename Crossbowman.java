@@ -5,15 +5,16 @@ public class Crossbowman extends BaseHero {
     int shots;
     int maxShots;
 
-    public Crossbowman(String name, int attack, int protection, int[] damage, int health, int speed, int shots) {
-        super(name, attack, protection, damage, health, speed);
+    public Crossbowman(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y, int shots) {
+        super(name, attack, protection, damage, health, speed, x, y);
 
         this.shots = shots;
         this.maxShots = shots;
+        super.position = new Vector2(x, y);
     }
 
-    public Crossbowman(String name) {
-        super(name, 6, 3, new int[] {2, 3}, 10, 4);
+    public Crossbowman(String name, int x, int y) {
+        super(name, 6, 3, new int[] {2, 3}, 10, 4, x, y);
         this.shots = 16;
     }
 
