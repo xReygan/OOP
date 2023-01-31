@@ -1,14 +1,16 @@
-// Оптимизировать проект для вывода информации в псевдо графике.
-// Необходимые классы в материалах к семинару!)
+// Реализовать полноценный выстрел у стрелков. Поиск ближайшего противника,
+// расчёт повреждения с учётом расстояния и разницы атаки стрелка и защиты цели.
+// Ну и нанесение повреждения. Боец с нулём жизней считается мёртвым.
+// В дальнейшем не лечится и не наносит повреждений).
+// Мертвые бойцы обозначаются другим цветом.
 
-//import chars.*;
-
+//import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Task4 {
-    public static final int GANG_SIZE = 5;
+public class Task5 {
+    public static final int GANG_SIZE = 10;
     public static ArrayList<BaseHero> whiteSide;
     public static ArrayList<BaseHero> darkSide;
 
@@ -17,8 +19,10 @@ public class Task4 {
         Scanner scanner = new Scanner(System.in);
         while (true){
             ConsoleView.view();
-            whiteSide.forEach(n -> n.step(darkSide));
-            darkSide.forEach(n -> n.step(whiteSide));
+            System.out.println("Ход Светлых: ");
+            whiteSide.forEach(n -> n.step(whiteSide, darkSide));
+            System.out.println("Ход Темных: ");
+            darkSide.forEach(n -> n.step(darkSide, whiteSide));
             scanner.nextLine();
         }
     }
@@ -38,7 +42,6 @@ public class Task4 {
                 default: whiteSide.add(new Monk("Monk", x, y++)); break;
             }
         }
-
         x = GANG_SIZE;
         y = 1;
         for (int i = 0; i < GANG_SIZE; i++) {

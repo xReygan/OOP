@@ -30,7 +30,10 @@ public class Peasant extends BaseHero {
     }
 
     @Override
-    public void step(ArrayList<BaseHero> team) {             
+    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> anyTeam) {
+        if (this.health == 0) {
+            return;
+        }                
         if (this.delivery <= 0) {
             this.delivery = 1;
             System.out.println("У Крестьянина была реактивирована доставка стрел: o^-o ");

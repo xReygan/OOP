@@ -7,8 +7,8 @@ public abstract class BaseHero implements Interface {
     int attack, protection, health, maxHealth, speed;
     int[] damage;
     public int delivery;
-    //int x;
-    //int y;
+    int x;
+    int y;
     Vector2 position;
 
 public BaseHero(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y) {
@@ -17,7 +17,7 @@ public BaseHero(String name, int attack, int protection, int[] damage, int healt
     this.protection = protection;
     this.damage = damage;
     this.maxHealth = health;
-    this.health = maxHealth - new Random().nextInt(0, maxHealth);
+    this.health = maxHealth;  // - new Random().nextInt(0, maxHealth);
     this.speed = speed;
     this.position = new Vector2(x, y);
 }
@@ -28,7 +28,7 @@ public String toString() {
 }
 
 @Override
-public void step(ArrayList<BaseHero> team) {
+public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> anyTeam) {
 
 }
 
@@ -58,5 +58,17 @@ public Vector2 getPosition() {
 
 public String getName() {
     return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public void setHealth(int health) {
+    this.health = health;
+}
+
+public int getHealth() {
+    return health;
 }
 }

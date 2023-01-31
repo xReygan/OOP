@@ -24,14 +24,47 @@ public class Crossbowman extends BaseHero {
     }
 
     @Override
-    public void step(ArrayList<BaseHero> team) {
+    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> anyTeam) {
+         if (this.health == 0) {
+            return;
+         }
         if (this.shots > 0) {
             this.shots = this.shots - 1;
+            int slaughter; // убой выстрела
+            float distance;
+            int minIndex = 0;
+            float tmpDis = 2 * team.size();
+            for (int i = 0; i < team.size(); i++) {
+                if (this.health == 0) {
+                    return;
+                }
+                float x = position.x; // Стрелок Свой
+                float y = position.y;
+                if (anyTeam.get(i).health != 0) {
+                    distance = anyTeam.get(i).getPosition().getDistance(x, y);
+                    if (tmpDis > distance) {
+                        tmpDis = distance;
+                        minIndex = i;
+                    }
+                }
+            }
+                if (tmpDis <= 4) {
+                    slaughter = damage[1];
+                } else {
+                    slaughter = damage[0];
+                }
+                if (anyTeam.get(minIndex).health > 0) {
+                    anyTeam.get(minIndex).setHealth(anyTeam.get(minIndex).health - slaughter);
+                    if (anyTeam.get(minIndex).health <= 0) {
+                        anyTeam.get(minIndex).setHealth(0);
+                        anyTeam.get(minIndex).setName("XDead");
+                    }
+                }
             System.out.println("Мощный выстрел и стрела ушла во врага: ---> ");
-        }           
-        for (int i = 0; i < team.size(); i ++) {                   
+        }
+        for (int i = 0; i < team.size(); i++) {
             if (team.get(i).getDelivery() > 0) {
-                if (this.shots != this.maxShots ) {
+                if (this.shots != this.maxShots) {
                     this.shots = this.shots + 1;
                 }
                 team.get(i).setDelivery(0);
@@ -39,5 +72,5 @@ public class Crossbowman extends BaseHero {
                 break;
             }
         }
-    }
+    }    
 }

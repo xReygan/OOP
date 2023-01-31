@@ -22,7 +22,10 @@ public class Monk extends BaseHero {
     }
 
     @Override
-    public void step(ArrayList<BaseHero> team) {
+    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> anyTeam) {
+        if (this.health == 0) {
+            return;
+        }
         int min = 0;
         String[] info = team.get(min).getInfo().split(" ");
         int tmp = Integer.parseInt(info[2]) * 100 / Integer.parseInt(info[1]);    
@@ -35,11 +38,14 @@ public class Monk extends BaseHero {
         }
         // System.out.println("Самый поврежденный юнит: ");
         // System.out.println(team.get(min));
-        if (team.get(min).health - damage[1] > team.get(min).maxHealth) {
+        if (team.get(min).health == team.get(min).maxHealth) {
+            System.out.println("Все воины здоровы ");
+        } else if (team.get(min).health - damage[1] > team.get(min).maxHealth) {
             team.get(min).health = team.get(min).maxHealth;
-        } else {
-            team.get(min).health = team.get(min).health - damage[1];
+            System.out.println("Был пролечен: +++ " + team.get(min));
+        }   else {
+                team.get(min).health = team.get(min).health - damage[1];
+                System.out.println("Был пролечен: +++ " + team.get(min));
         }
-        System.out.println("Был пролечен: +++ " + team.get(min));
     }
 }
