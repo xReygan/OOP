@@ -5,22 +5,23 @@ public class Sniper extends BaseHero {
     int shots;
     int maxShots;
 
-    public Sniper(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y, int shots) {
+    public Sniper(String name, int attack, int protection, int[] damage, int health, int speed, int x, int y,
+            int shots) {
         super(name, attack, protection, damage, health, speed, x, y);
-        
+
         this.shots = shots;
         this.maxShots = shots;
         super.position = new Vector2(x, y);
     }
 
     public Sniper(String name, int x, int y) {
-        super(name, 12, 10, new int[] {8, 10}, 15, 9, x, y);
+        super(name, 12, 10, new int[] { 8, 10 }, 15, 9, x, y);
         this.shots = 32;
     }
-    
+
     @Override
     public String toString() {
-    return super.toString() + ", Shots: " + shots; 
+        return super.toString() + ", Shots: " + shots;
     }
 
     @Override
@@ -48,20 +49,21 @@ public class Sniper extends BaseHero {
                     }
                 }
             }
-                if (tmpDis <= 4) {
-                    slaughter = damage[1];
-                } else if (tmpDis >= 12) {
-                    slaughter = damage[0];
-                } else {
-                    slaughter = damage[0] + (damage[0] + damage[1])/2;
+            if (tmpDis == 2 * team.size()) return;
+            if (tmpDis <= 4) {
+                slaughter = damage[1];
+            } else if (tmpDis >= 12) {
+                slaughter = damage[0];
+            } else {
+                slaughter = damage[0] + (damage[0] + damage[1]) / 2;
+            }
+            if (anyTeam.get(minIndex).health > 0) {
+                anyTeam.get(minIndex).setHealth(anyTeam.get(minIndex).health - slaughter);
+                if (anyTeam.get(minIndex).health <= 0) {
+                    anyTeam.get(minIndex).setHealth(0);
+                    anyTeam.get(minIndex).setName("XDead");
                 }
-                if (anyTeam.get(minIndex).health > 0) {
-                    anyTeam.get(minIndex).setHealth(anyTeam.get(minIndex).health - slaughter);
-                    if (anyTeam.get(minIndex).health <= 0) {
-                        anyTeam.get(minIndex).setHealth(0);
-                        anyTeam.get(minIndex).setName("XDead");
-                    }
-                }
+            }
             System.out.println("Мощный выстрел и стрела ушла во врага: ---> ");
         }
         for (int i = 0; i < team.size(); i++) {

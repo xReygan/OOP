@@ -41,6 +41,7 @@ public class Witch extends BaseHero {
         }
         // System.out.println("Самый поврежденный юнит: ");
         // System.out.println(team.get(min));
+        if (min == 0) return;
         if (team.get(min).health - damage[1] > team.get(min).maxHealth) {
             team.get(min).health = team.get(min).maxHealth;
         } else {

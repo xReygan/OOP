@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 public abstract class BaseHero implements Interface {
     String name;
@@ -40,7 +39,7 @@ public String getInfo() {
 //@Override
 public String getInfo2() {
     //String outStr = String.format("⚔ %d\t\uD83D\uDEE1 %d\t♥%.1f\t☠%d", attack, protection, health, (damage[0] + damage[1]) / 2, speed);
-    String outStr = String.format("%s: Атака %s %s  Защита %s %s  Жизнь %s %s/%s  Урон %s %s/%s  %s/%s", name, (char)33, attack, (char)35, protection, (char)164, health, maxHealth, (char)37, damage[0], damage[1], position.x, position.y);
+    String outStr = String.format("%s: Атака %s %s  Защита %s %s  Жизнь %s %s/%s  Урон %s %s/%s  %s|%s", name, (char)33, attack, (char)35, protection, (char)164, health, maxHealth, (char)37, damage[0], damage[1], position.x, position.y);
     return outStr;
 }
 
