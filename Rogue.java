@@ -38,7 +38,7 @@ public class Rogue extends BaseHero {
                 anyTeam.get(minIndex).setHealth(0);
                 anyTeam.get(minIndex).setName("XDead");
             }
-            System.out.println("Мощный удар поразил врага врага: ->> ");
+            System.out.println("Мощный удар поразил врага: ->> ");
         } else {
             if (px < anyTeam.get(minIndex).getPosition().x) {
                 position.x = position.x + 1;

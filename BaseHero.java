@@ -23,7 +23,7 @@ public BaseHero(String name, int attack, int protection, int[] damage, int healt
 
 @Override
 public String toString() {
-    return "Name: " + name + ", Attack: " + attack + ", Protection: " + protection + ", Damage: " + Arrays.toString(damage) + ", Health: " + health + ", Speed: " + speed; 
+    return "Name: " + name + ", Attack: " + attack + ", Protection: " + protection + ", Damage: " + Arrays.toString(damage) + ", Health: " + health + ", Speed: " + speed + ", Deca:" + position.x + "|" + position.y; 
 }
 
 @Override
@@ -43,31 +43,40 @@ public String getInfo2() {
     return outStr;
 }
 
+
 public void setDelivery(int delivery) {
     this.delivery = delivery;
 }
-
 public int getDelivery() {
     return delivery;
 }
+
 
 public Vector2 getPosition() {
     return position;
 }
 
+
 public String getName() {
     return name;
 }
-
 public void setName(String name) {
     this.name = name;
 }
 
+
 public void setHealth(int health) {
     this.health = health;
 }
-
 public int getHealth() {
     return health;
+}
+
+
+public void setSpeed(int health) {
+    this.health = speed;
+}
+public int getSpeed() {
+    return speed;
 }
 }
